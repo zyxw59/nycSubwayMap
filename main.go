@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/zyxw59/subwayMap/canvas"
 	"github.com/zyxw59/subwayMap/corner"
+	"log"
 	"os"
 )
 
@@ -21,18 +22,19 @@ func main() {
 		c canvas.Canvas
 	)
 	const (
-		width  = 2000
-		height = 3000
-		rbase  = 30
-		rsep   = 10
-		av11x  = 90
-		av10x  = 100
-		av8x   = 200
-		av7x   = 300
-		av6x   = 400
-		av5x   = 450
-		av4x   = 550
-		av2x   = 650
+		filename = "nyc.svg"
+		width    = 2000
+		height   = 3000
+		rbase    = 30
+		rsep     = 10
+		av11x    = 90
+		av10x    = 100
+		av8x     = 200
+		av7x     = 300
+		av6x     = 400
+		av5x     = 450
+		av4x     = 550
+		av2x     = 650
 	)
 
 	// Broadway
@@ -65,7 +67,6 @@ func main() {
 	// Chambers St (A C)
 	churchChambers := corner.Point{av6x, stY(-50)}
 
-
 	// Lines
 	// IRT Broadway--7 Av Line
 	av7 := corner.Sequence(bdwySt181, bdwySt107, bdwySt104, bdwySt77, bdwySt59, timesSq, greenwichRector, southFerry)
@@ -94,6 +95,10 @@ func main() {
 	av6lines := []corner.Path{bB, bD, bF, bM}
 
 	// Draw it
-	c = canvas.Canvas{os.Stdout}
+	file, err := os.Create(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	c = canvas.Canvas{file}
 	c.PrintAll(width, height, "nyc", rbase, rsep, av7lines, av8lines, av6lines)
 }

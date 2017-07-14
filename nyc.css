@@ -1,0 +1,21 @@
+.av8, .av7, .av6, .bdwy, .avLex, .flushing, .canarsie, .stNassau, .xTown, .shuttle {
+    fill: None;
+    stroke-width: 7px;
+}
+
+.av8 {stroke: blue}
+.av7 {stroke: red}
+.av6 {stroke: orange}
+.bdwy {stroke: yellow}
+.avLex {stroke: green}
+.flushing {stroke: purple}
+.canarsie {stroke: lightgray}
+.stNassau {stroke: brown}
+.xTown {stroke: lime}
+.shuttle {stroke: darkgray}
+
+.whitebg {
+    fill: None;
+    stroke-width: 9px;
+    stroke: white
+}

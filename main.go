@@ -4,6 +4,7 @@ import (
 	"github.com/zyxw59/subwayMap/canvas"
 	"github.com/zyxw59/subwayMap/corner"
 	"log"
+	"fmt"
 	"os"
 )
 
@@ -22,9 +23,10 @@ func main() {
 		c canvas.Canvas
 	)
 	const (
-		filename = "nyc.svg"
+		filename = "nyc"
 		width    = 2000
 		height   = 3000
+		stylesheet = "nyc"
 		rbase    = 30
 		rsep     = 10
 		av11x    = 90
@@ -36,6 +38,13 @@ func main() {
 		av4x     = 550
 		av2x     = 650
 	)
+
+	// initialize canvas
+	file, err := os.Create(fmt.Sprintf("%s.css", filename))
+	if err != nil {
+		log.Fatal(err)
+	}
+	c = *canvas.New(file, width, height, stylesheet, rbase, rsep)
 
 	// Broadway
 	bdwySt181 := corner.Point{av11x, stY(181)}
@@ -83,22 +92,17 @@ func main() {
 
 	// Paths
 	a1 := *corner.NewPath("1", "av7", av7, []int{0, 0, 0, 0, 0, 0, 0})
-	av7lines := []corner.Path{a1}
+	c.AddPaths(a1)
 	bA := *corner.NewPath("a", "av8", av8, []int{1, 0, 2, 2, 2})
 	bC := *corner.NewPath("c", "av8", av8, []int{0, -1, 1, 1, 1})
 	bE := *corner.NewPath("e", "av8", append(av8e[:2], av8[1:]...), []int{-1, 0, -1, 1, 1, 1})
-	av8lines := []corner.Path{bA, bC, bE}
+	c.AddPaths(bA, bC, bE)
 	bB := *corner.NewPath("b", "av6", av6, []int{-1, 0, 0, 1})
 	bD := *corner.NewPath("d", "av6", av6, []int{2, 0, 0, 1})
 	bF := *corner.NewPath("f", "av6", append(av6f[:2], av6[3:]...), []int{1, -1, 0, 1})
 	bM := *corner.NewPath("m", "av6", append(av6m[:2], av6[3:]...), []int{0, -1, 0, 1})
-	av6lines := []corner.Path{bB, bD, bF, bM}
+	c.AddPaths(bB, bD, bF, bM)
 
-	// Draw it
-	file, err := os.Create(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	c = canvas.Canvas{file}
-	c.PrintAll(width, height, "nyc", rbase, rsep, av7lines, av8lines, av6lines)
+	// Finish drawing
+	c.Close()
 }

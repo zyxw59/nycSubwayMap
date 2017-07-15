@@ -40,7 +40,7 @@ func main() {
 	)
 
 	// initialize canvas
-	file, err := os.Create(fmt.Sprintf("%s.css", filename))
+	file, err := os.Create(fmt.Sprintf("%s.svg", filename))
 	if err != nil {
 		log.Fatal(err)
 	}

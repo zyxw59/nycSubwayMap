@@ -1,10 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"github.com/zyxw59/subwayMap/canvas"
 	"github.com/zyxw59/subwayMap/corner"
 	"log"
-	"fmt"
 	"os"
 )
 
@@ -23,20 +23,20 @@ func main() {
 		c canvas.Canvas
 	)
 	const (
-		filename = "nyc"
-		width    = 2000
-		height   = 3000
+		filename   = "nyc"
+		width      = 2000
+		height     = 3000
 		stylesheet = "nyc"
-		rbase    = 30
-		rsep     = 10
-		av11x    = 90
-		av10x    = 100
-		av8x     = 200
-		av7x     = 300
-		av6x     = 400
-		av5x     = 450
-		av4x     = 550
-		av2x     = 650
+		rbase      = 30
+		rsep       = 10
+		av11x      = 90
+		av10x      = 100
+		av8x       = 200
+		av7x       = 300
+		av6x       = 400
+		av5x       = 450
+		av4x       = 550
+		av2x       = 650
 	)
 
 	// initialize canvas

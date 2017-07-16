@@ -80,27 +80,27 @@ func main() {
 	// IRT Broadway--7 Av Line
 	av7 := corner.Sequence(bdwySt181, bdwySt107, bdwySt104, bdwySt77, bdwySt59, timesSq, greenwichRector, southFerry)
 	// 8 Av trunk
-	av8 := corner.Sequence(av8st145, av8st14, av8st4, churchChambers)
+	av8 := corner.Sequence(av8st145, av8st53, av8st14, av8st4, churchChambers)
 	// E to Queens
-	av8e := corner.Sequence(st53av2, av8st53, av8st14)
+	av8e := corner.Sequence(st53av2, av8st53)
 	// 6 Av trunk
-	av6 := corner.Sequence(av8st145, av8st53, av6st53, av6st4, houstonAv2)
+	av6 := corner.Sequence(av8st53, av6st53, av6st4, houstonAv2)
 	// M to Queens
-	av6m := corner.Sequence(st53av2, av6st53, av6st4)
+	av6m := corner.Sequence(st53av2, av6st53)
 	// F to Queens
 	av6f := corner.Sequence(st63av2, av6st63, av6st53)
 
 	// Paths
 	a1 := corner.NewPath("1", "av7", av7, []int{0, 0, 0, 0, 0, 0, 0})
 	c.AddElements(a1)
-	bA := corner.NewPath("a", "av8", av8, []int{1, 0, 2, 2, 2})
-	bC := corner.NewPath("c", "av8", av8, []int{0, -1, 1, 1, 1})
-	bE := corner.NewPath("e", "av8", append(av8e[:2], av8[1:]...), []int{-1, 0, -1, 1, 1, 1})
+	bA := corner.NewPath("a", "av8", av8, []int{1, 1, 0, 2, 2, 2})
+	bC := corner.NewPath("c", "av8", av8, []int{0, 0, -1, 1, 1, 1})
+	bE := corner.NewPath("e", "av8", append(av8e, av8[1:]...), []int{-1, 0, -1, 1, 1, 1})
 	c.AddElements(bA, bC, bE)
-	bB := corner.NewPath("b", "av6", av6, []int{-1, 0, 0, 1})
-	bD := corner.NewPath("d", "av6", av6, []int{2, 0, 0, 1})
-	bF := corner.NewPath("f", "av6", append(av6f[:2], av6[3:]...), []int{1, -1, 0, 1})
-	bM := corner.NewPath("m", "av6", append(av6m[:2], av6[3:]...), []int{0, -1, 0, 1})
+	bB := corner.NewPath("b", "av6", append(av8[:1], av6...), []int{-1, 0, 0, 1})
+	bD := corner.NewPath("d", "av6", append(av8[:1], av6...), []int{2, 0, 0, 1})
+	bF := corner.NewPath("f", "av6", append(av6f, av6[1:]...), []int{1, -1, -1, 0, 1})
+	bM := corner.NewPath("m", "av6", append(av6m, av6[1:]...), []int{0, -1, 0, 1})
 	c.AddElements(bB, bD, bF, bM)
 
 	// Finish drawing

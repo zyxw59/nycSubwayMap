@@ -1,21 +1,47 @@
 .av8, .av7, .av6, .bdwy, .avLex, .flushing, .canarsie, .stNassau, .xTown, .shuttle {
     fill: None;
-    stroke-width: 7px;
+    stroke-width: 5px;
 }
 
-.av8 {stroke: blue}
-.av7 {stroke: red}
-.av6 {stroke: orange}
-.bdwy {stroke: yellow}
-.avLex {stroke: green}
-.flushing {stroke: purple}
-.canarsie {stroke: lightgray}
-.stNassau {stroke: brown}
-.xTown {stroke: lime}
-.shuttle {stroke: darkgray}
+.av8 {stroke: #06b}
+.av7 {stroke: #e34}
+.av6 {stroke: #f82}
+.bdwy {stroke: #fd2}
+.avLex {stroke: #095}
+.flushing {stroke: #939}
+.canarsie {stroke: #999}
+.stNassau {stroke: #a71}
+.xTown {stroke: #7c4}
+.shuttle {stroke: #666}
 
-.whitebg {
+path.bg {
     fill: None;
-    stroke-width: 9px;
-    stroke: white
+    stroke: None;
+}
+
+.bdwy.bg {
+    stroke-width: 6px;
+    stroke: black;
+}
+
+.label {
+    font-size:10pt;
+    font-family:Helvetica;
+}
+
+.label.bg {
+    fill: None;
+    stroke-width: 2px;
+    stroke: white;
+}
+
+circle {
+    fill: black;
+    stroke-width: 0px;
+    stroke: black;
+}
+
+circle.bg {
+    fill: None;
+    stroke: None;
 }
